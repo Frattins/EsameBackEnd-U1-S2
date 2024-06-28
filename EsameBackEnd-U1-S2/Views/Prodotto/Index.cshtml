@@ -1,0 +1,24 @@
+﻿@model IEnumerable<EsameBackEnd_U1_S2.Models.Prodotto>
+
+@{
+    ViewData["Title"] = "Vetrina Prodotti";
+}
+
+<h1>Vetrina Prodotti</h1>
+
+<div class="row">
+    @foreach (var prodotto in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="~/images/@prodotto.ImmagineCopertina" alt="Immagine di @prodotto.Nome">
+                <div class="card-body">
+                    <h5 class="card-title">@prodotto.Nome</h5>
+                    <p class="card-text">@prodotto.Prezzo.ToString("C")</p>
+                    <p class="card-text">@prodotto.Descrizione</p>
+                    <a href="@Url.Action("Dettagli", "Prodotto", new { id = prodotto.Id })" class="btn btn-primary">Dettagli</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
